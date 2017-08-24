@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+function getType() {
+var types = document.getElementById("typess").value;
+window.location.href = "http://localhost:8080/RestfullWebservice/downnload/"+types;
+
+}
+</script>
+
+
+
+
+<body>
+	<form>
+
+		<table>
+			<tr>
+
+				<td><input list="types" name="type" id="typess"> <datalist
+						id="types">
+						<option value="txt">
+						<option value="png">
+						<option value="pdf">
+					</datalist></td>
+				<td><input type="button" value="Dowload" onclick="getType()"/></td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+</html>

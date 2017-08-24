@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+  <link rel="stylesheet" href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css/> 
+<script src="https://code.angularjs.org/2.0.0-alpha.30/angular2.sfx.dev.js"></script>
+
+<script src="app.js"></script>
+<script>
+
+function Welcome(){}
+Welcome.annotations=[
+	
+	new angular.ComponentAnnotation({
+		selector:"first"
+	}),
+	new angular.ViewAnnotation({
+		template:"<h1>welcome</h1>"
+	})
+];
+
+document.addEventListener("DOMContentLoaded",function(){
+	angular.bootstrap(Welcome);
+})
+</script>
+
+</head>
+<body>
+
+<first>2 </first>
+
+</body>
+</html>

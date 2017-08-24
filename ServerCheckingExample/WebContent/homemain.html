@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>TICKET BOOKING</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+ <script src="script.js"></script>
+ <!--  <script type="text/javascript" src="price.json"></script> -->
+<style>
+table, th, td {
+	border: 1px solid grey;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+table tr:nth-child(odd) {
+	background-color: powderblue;
+}
+
+table tr:nth-child(even) {
+	background-color: lightyellow;
+}
+body{background-color: lightgray;}
+li a:hover{
+    background-color: red;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">TICKET BOOKING</a>
+			</div>
+			<div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">User <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="login.jsp">Login</a></li>
+								<li><a href="signup.jsp">Signin</a></li>
+							</ul></li>
+						<li><a href="#">Aboutus</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="signup.jsp"><span
+								class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a href="login.jsp"><span
+								class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<div ng-app="mainApp" ng-controller="ticketController as ctrl">
+
+					<form name="ticketForm" novalidate>
+						<table border="0">
+							<tr>
+								<td>FROM:</td>
+								<td><input name="from" type="text" ng-model="ctrl.user.from" placeholder="chennai" required>
+									<span style="color: red"
+									ng-show="ticketForm.from.$dirty && ticketForm.from.$invalid">
+										<span ng-show="ticketForm.from.$error.required">Enter From.</span>
+								</span></td>
+								<td>TO:</td>
+								<td><input name="to" type="text" ng-model="ctrl.user.to" placeholder="sivagangai" required>
+									<span style="color: red"
+									ng-show="ticketForm.to.$dirty && ticketForm.to.$invalid">
+										<span ng-show="ticketForm.to.$error.required">Enter To.</span>
+								</span></td>
+								<td>DATE: </td><td><input type="date" name="dates"  ng-model="date" required /></td>
+							</tr>
+							</table>
+							<br>
+							<br>
+							<br>
+							<table style="background-color:powderblue;"><tr><td>CHOOSE U R VEHICLE</td><td>
+							<select ng-model="ctrl.user.vehicle" id="vehicle">
+								<option value="Flight">Flight</option>
+								<option value="Bus">Bus</option>
+								<option value="Train">Train</option>
+							</select></td>
+							</tr>
+							</table>
+							<br>
+							<br>
+							<br>
+							<div class="container-fluid">
+							<div class="row">
+							<div class="col-sm-8">
+							<table>
+							<tr>
+								<td>HEAD COUNT:</td>
+								<td><input type="text" id="headcount" ng-model="ctrl.user.headcount"  class="form-control" 
+                                 required="" ng-blur="something(myform)"  /></td>
+							</tr>
+
+							<tr>
+								<td>Email:</td>
+								<td><input name="email" type="email" ng-model="ctrl.user.email"
+									length="100" placeholder="v@gmail.com" required> <span style="color: red"
+									ng-show="ticketForm.email.$dirty && ticketForm.email.$invalid">
+										<span ng-show="ticketForm.email.$error.required">Enter EmailId.
+										</span> <span ng-show="ticketForm.email.$error.email">Invalid.</span>
+								</span></td>
+							</tr>
+
+							<tr>
+								<td>
+									<button ng-click="reset()">Reset</button>
+								</td>
+								<td>
+									<button
+										ng-disabled="ticketForm.from.$dirty &&  
+                        ticketForm.from.$invalid || ticketForm.to.$dirty &&  
+                        ticketForm.to.$invalid"
+										ng-click="submit()">Submit</button>
+								</td>
+							</tr>
+
+						</table>
+						</div>
+						<div class="col-sm-4">
+						<table>
+						<tr><td>PRICE:</td></tr><tr><td><div id="price"></div></td></tr></table>
+						</div>
+						</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+</body>
+</html>
